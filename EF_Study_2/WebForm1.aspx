@@ -15,6 +15,18 @@
                 <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                 <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
+                <asp:TemplateField HeaderText="Employees">
+                    <ItemTemplate>
+                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSource='<%# Eval("Employees") %>'>
+                            <Columns>
+                                <asp:BoundField DataField="FirstName" HeaderText="First name" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last name" />
+                                <asp:BoundField DataField="Gender" HeaderText="Gender" />
+                                <asp:BoundField DataField="Salary" HeaderText="Salary" />
+                            </Columns>
+                        </asp:GridView>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -26,7 +38,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=EmployeeDBContext" DefaultContainerName="EmployeeDBContext" EnableFlattening="False" EntitySetName="Departments"></asp:EntityDataSource>
+        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=EmployeeDBContext" DefaultContainerName="EmployeeDBContext" EnableFlattening="False" EntitySetName="Departments" Include="Employees"></asp:EntityDataSource>
     </div>
     </form>
 </body>
